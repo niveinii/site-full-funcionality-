@@ -1,0 +1,51 @@
+<br><br><br>
+<div class="row">
+
+  <div class="col-5">
+    <div class="container">
+      <form>
+        <h3>Welcome back!</h3><br>
+        <div class="form-group">
+          <label for="txtEmail">Email:
+            <input type="email" class="form-control" formControlname="emails" #emails placeholder="Enter Email:">
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="txtPassword">Password:
+            <input type="passwords" class="form-control" formControlname="password" #passwords
+              placeholder="Enter Password:">
+          </label>
+        </div>
+        <input type="checkbox"> Keep me signed in
+        <br><br>
+        <button type="submit" (click)="logIn(emails.value, passwords.value)" class="btn btn-primary">Log In</button>
+      </form>
+    </div>
+  </div>
+  <div class="vl"></div>
+  <div class="col-5">
+    <div class="container">
+      <form>
+        <h3>Or create a new account:</h3><br>
+        <div class="form-group">
+          <label for="txtEmail">Email:
+            <input type="email" class="form-control" formControlname="email" #email placeholder="Enter Email:">
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="txtUserName">Username:
+            <input type="text" class="form-control" formControlname="username" #username placeholder="Enter Username:">
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="txtPassword">Password:
+            <input type="password" class="form-control" formControlname="password" #password
+              placeholder="Enter Password:">
+          </label>
+        </div>
+        <button type="submit" (click)="signUp(email.value, username.value, password.value)" class="btn btn-primary">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+</div>

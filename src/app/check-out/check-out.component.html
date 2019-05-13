@@ -1,0 +1,7 @@
+<br><br><br>
+<div class="container text-center">
+    <button class="btn btn-primary" (click)="checkOut()">Checkout</button>
+    <ul *ngFor="let item of cart">
+        <li>{{item.description}} {{item.totalAmount}} {{item.totalCost}}</li>
+    </ul>
+</div>

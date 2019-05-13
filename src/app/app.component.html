@@ -1,0 +1,46 @@
+<!--------Navbar------->
+<nav class="navbar navbar-expand-lg navbar-light bg-light x-navbar">
+  <a class="navbar-brand"><i style="color:black;cursor:pointer" routerLink="home" class="fas fa-bone fa-lg"></i></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link ml-4" *ngIf="isLoggedIn" routerLink="product-manager">Product Manager<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto">
+      <li class="navbar-brand">Hi {{userName || "Guest"}}!</li>
+    </ul>
+    <li class="navbar-nav nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-plus"></i></a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" routerLink="login" *ngIf="!isLoggedIn">Log In</a>
+        <a class="dropdown-item">Register</a>
+        <div class="dropdown-divider" *ngIf="isLoggedIn"></div>
+        <a class="dropdown-item" (click)="clearStorage()" *ngIf="isLoggedIn">Logout</a>
+      </div>
+    </li>
+    <li class="navbar-nav nav-item active">
+      <a class="nav-link active" routerLink="about">About</a>
+    </li>
+    <li class="navbar-nav nav-item active">
+      <a class="nav-link active" routerLink="contact">Contact</a>
+    </li>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+<!---Contact us-->
+
+<hr class=marginHr>
+<h5 class="pr-4 pt-3 contact">Follow Us</h5>
+<div class="s-m">
+  <a class="fa fa-facebook" href="https://www.facebook.com/niv.eini"></a>
+  <a class="fa fa-github" id="tweet" href="https://github.com/niveinii"></a>
+  <a class="fa fa-envelope" id="google" href="https://mail.google.com/mail/u/0/#inbox"></a>
+  <a class="fa fa-youtube" id="youtube" href="https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ"></a>
+  <a class="fa fa-linkedin" id="linkedin" href="https://www.linkedin.com/in/niv-eini-ba14b9122/"></a>
+</div>

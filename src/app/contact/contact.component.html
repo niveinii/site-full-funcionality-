@@ -1,0 +1,30 @@
+<br>
+<br>
+<img src="http://shreenathjidyechem.com/wp-content/uploads/2018/05/contact-us.jpg" alt="">
+<div class="container">
+    <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+        <br>
+        <p>Your Name<span class="mendatory">*</span></p>
+        <input #username="ngModel" ngModel class="form-control" type="text" name="username" required>
+        <p *ngIf="!username.valid && username.touched" class="validators">please enter a valid name</p>
+        <br>
+        <p>Your Email<span class="mendatory">*</span></p>
+        <input #email="ngModel" ngModel class="form-control" type="text" required email name="email">
+        <p *ngIf="!email.valid && email.touched" class="validators">please enter a valid mail</p>
+        <br>
+        <p>Your Comment</p>
+        <textarea ngModel name="comment" id="comment" cols="47" rows="5"></textarea>
+        <br>
+        <br>
+        <span *ngIf="submitted" class="fade-in alert alert-success">
+            <strong>Success! </strong> Thank your for contacting us! Message sent successfully.</span>
+        <br>
+        <br>
+        <br>
+        <br>
+        <button class="hvr-grow" style="font-size:20px" [disabled]="!myForm.valid" type="submit">Submit</button>
+        
+    </form>
+
+          
+</div>

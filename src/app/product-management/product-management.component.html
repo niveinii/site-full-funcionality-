@@ -1,0 +1,83 @@
+<br><br><br>
+<div class="container text-center">
+  <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#createProductModal">Create</button>
+<!-- Modal1 -->
+<div class="modal fade" id="createProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="modal-body" (ngSubmit)="onSubmit(f,cost.value)" #f="ngForm">
+          <div class="form-group">
+            <label for="picture">Picture: </label><input class="form-control text-center" ngModel list="icons" placeholder="Item Picture" #picture="ngModel" name="picture" required>
+            <datalist id="icons">
+              <option *ngFor="let icon of fasIcons" value="fas {{icon}}"></option>
+            </datalist>
+            <p *ngIf="!picture.valid && picture.touched" class="validators">please enter a picture</p>
+            <label for="description">Description: </label><input class="form-control text-center" ngModel type="text" Placeholder="Item Description" name="description" #description="ngModel" required>
+            <p *ngIf="!description.valid && description.touched" class="validators">please enter a description</p>
+            <label for="cost">Cost: </label><input class="form-control text-center" ngModel type="number" Placeholder="Item Cost" name="cost" #cost="ngModel" required>
+            <p *ngIf="!cost.valid && cost.touched" class="validators">Cost is required</p>
+          </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addProduct(picture.value,description.value,cost.value)">Create Product</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <br><br><br>
+  <table class="table">
+    <th>Picture</th>
+    <th>Description </th>
+    <th>Cost</th>
+    <th colspan="2">Edit / Remove</th>
+    <tr *ngFor="let product of products">
+      <td class="p-3 boldMe"><i class="{{product.picture}}"></i></td>
+      <td class="p-3 boldMe">{{product.description}}</td>
+      <td class="p-3 boldMe">{{product.cost}} ₪</td>
+      <td><button class="btn btn-primary mr-1" data-toggle="modal" data-target="#editProductModal" (click)="getId(product._id)">Edit</button><button class="btn btn-danger" (click)="removeProduct(product._id)">Remove</button></td>
+
+      <!-- Modal2 -->
+<div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form class="modal-body" (ngSubmit)="onSubmit(f,cost.value)" #f="ngForm">
+        <div class="form-group">
+          <label for="picture">Picture: </label><input class="form-control text-center" ngModel list="icons" placeholder="New Item Picture" #picture="ngModel" name="picture" required>
+          <datalist id="icons">
+            <option *ngFor="let icon of fasIcons" value="fas {{icon}}"></option>
+          </datalist>
+          <p *ngIf="!picture.valid && picture.touched" class="validators">please enter a picture</p>
+          <label for="description">Description: </label><input class="form-control text-center" ngModel type="text" Placeholder="New Item Description" name="description" #description="ngModel" required>
+          <p *ngIf="!description.valid && description.touched" class="validators">please enter a description</p>
+          <label for="cost">Cost: </label><input class="form-control text-center" ngModel type="number" Placeholder="New Item Cost" name="cost" #cost="ngModel" required>
+          <p *ngIf="!cost.valid && cost.touched" class="validators">Cost is required</p>
+        </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" [disabled]="!f.valid" type="submit" (click)="editProduct(picture.value,description.value,cost.value)">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </tr>
+  </table>
+</div>
+
+
